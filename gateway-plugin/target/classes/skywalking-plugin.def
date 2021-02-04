@@ -1,0 +1,1 @@
+gateway=com.xcewell.esb.skywalking.apm.plugin.gateway.GatewayInstrumentation

@@ -6,6 +6,7 @@ import org.apache.skywalking.apm.agent.core.plugin.interceptor.ConstructorInterc
 import org.apache.skywalking.apm.agent.core.plugin.interceptor.InstanceMethodsInterceptPoint;
 import org.apache.skywalking.apm.agent.core.plugin.interceptor.enhance.ClassInstanceMethodsEnhancePluginDefine;
 import org.apache.skywalking.apm.agent.core.plugin.match.ClassMatch;
+import org.apache.skywalking.apm.agent.core.plugin.match.NameMatch;
 
 import static net.bytebuddy.matcher.ElementMatchers.named;
 
@@ -20,21 +21,24 @@ public class GatewayInstrumentation extends ClassInstanceMethodsEnhancePluginDef
     private static final String INTERCEPT_CLASS =
             "com.xcewell.esb.skywalking.apm.plugin.gateway.GatewayInterceptor";
 
+    @Override
     protected ClassMatch enhanceClass() {
-        return null;
+        return NameMatch.byName(ENHANCE_CLASS);
     }
 
+    @Override
     public ConstructorInterceptPoint[] getConstructorsInterceptPoints() {
         return null;
     }
 
+    @Override
     public InstanceMethodsInterceptPoint[] getInstanceMethodsInterceptPoints() {
         return new InstanceMethodsInterceptPoint[] {
                 new InstanceMethodsInterceptPoint() {
 
                     @Override
                     public ElementMatcher<MethodDescription> getMethodsMatcher() {
-                        return named("invoke");
+                        return named("filter");
                     }
 
                     @Override

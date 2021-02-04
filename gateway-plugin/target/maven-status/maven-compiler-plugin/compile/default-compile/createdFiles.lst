@@ -1,0 +1,3 @@
+com/xcewell/esb/skywalking/apm/plugin/gateway/GatewayInstrumentation.class
+com/xcewell/esb/skywalking/apm/plugin/gateway/GatewayInstrumentation$1.class
+com/xcewell/esb/skywalking/apm/plugin/gateway/GatewayInterceptor.class
